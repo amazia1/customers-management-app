@@ -1,0 +1,65 @@
+<div *ngIf="customer | async as customer" class="w-full flex-col justify-center shadow-md rounded-lg p-4 mt-6 h-full bg-white">
+  <div class="flex w-full py-2 mb-2 border-b">
+    <span class="text-medium font-bold">Contracts</span>
+  </div>
+  <div class="hide-scroll flex-col w-full h-64 overflow-auto">
+    <ul>
+      <li *ngFor="let contract of customer.data.contracts"
+        class="cursor-pointer hover:bg-gray-100 border-b sm:p-2"
+        (click)="showPackages(contract.packages)">
+          <div class="flex items-center space-x-4">
+            <!-- <div class="flex-shrink-0">
+                <img class="w-10 h-10 rounded-full" src="../../../assets/images/img.jpg" alt="Neil image">
+            </div> -->
+            <div class="flex-1 min-w-0">
+                <p class="text-sm font-semibold text-gray-900 truncate">
+                  {{ contract.contractName }}, {{ contract.contractNumber }}
+                </p>
+                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                  {{ contract.contractType }}
+                </p>
+            </div>
+            <div class="inline-flex items-center text-base font-semibold text-gray-900">
+              <fa-icon [icon]="['fas', 'pen-to-square']"></fa-icon>
+            </div>
+          </div>
+      </li>
+    </ul>
+    <div *ngIf="!customer.data.contracts.length" class="m-auto">
+      <span class="text-medium font-bold">No Contracts Found!</span>
+    </div>
+  </div>
+</div>
+
+<app-contract-packages [packages]="packages"></app-contract-packages>
+
+<!-- <main id="content" role="main" class="w-full max-w-md mx-auto p-6" *ngIf="true">
+  <div class="mt-7 bg-white  rounded-xl shadow-lg">
+    <div class="p-4 sm:p-7">
+      <div class="text-center">
+        <h1 class="block text-2xl font-bold text-gray-800">Forgot password?</h1>
+        <p class="mt-2 text-sm text-gray-600">
+          Remember your password?
+          <a class="text-blue-600 decoration-2 hover:underline font-medium" href="#">
+            Login here
+          </a>
+        </p>
+      </div>
+
+      <div class="mt-5">
+        <form>
+          <div class="grid gap-y-4">
+            <div>
+              <label for="email" class="block text-sm font-bold ml-1 mb-2 dark:text-white">Email address</label>
+              <div class="relative">
+                <input type="email" id="email" name="email" class="py-3 px-4 block w-full border-2 border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 shadow-sm" required aria-describedby="email-error">
+              </div>
+              <p class="hidden text-xs text-red-600 mt-2" id="email-error">Please include a valid email address so we can get back to you</p>
+            </div>
+            <button type="submit" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">Reset password</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main> -->

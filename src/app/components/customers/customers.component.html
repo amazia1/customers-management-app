@@ -1,5 +1,12 @@
-<header class="bg-white shadow">
-  <div class="mx-auto max-w-7xl px-4 py-6">
-    <h3 class="text-3xl font-bold tracking-tight text-gray-900">Customers Management App</h3>
+
+  <div class="flex-col space-y-8">
+    <div class="flex-1">
+      <app-customer-details [customer]="customer$"></app-customer-details>
+    </div>
+
+    <div class="flex-1">
+      <app-customer-contracts [customer]="customer$"></app-customer-contracts>
+    </div>
   </div>
-</header>
+  
+

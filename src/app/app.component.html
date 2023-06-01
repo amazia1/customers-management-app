@@ -1,4 +1,4 @@
-<div class="min-h-full">
+<div class="h-screen bg-gray-100">
   <nav class="bg-sky-800">
     <div class="mx-auto max-w-7xl px-4">
       <div class="flex h-16 items-center justify-between">
@@ -8,13 +8,13 @@
           </div>
         </div>
         <div class="ml-10 flex items-baseline space-x-4">
-          <a href="#" class="bg-sky-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Logout</a>
+          <a href="#" (click)="logout()" class="bg-sky-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Logout</a>
         </div>
       </div>
     </div>
   </nav>
   <main>
-    <div class="h-full mx-auto max-w-7xl p-6">
+    <div class="h-full bg-gray-100 mx-auto max-w-7xl p-6">
       <router-outlet></router-outlet>
     </div>
   </main>

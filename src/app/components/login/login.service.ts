@@ -12,9 +12,7 @@ export class LoginService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public checkCustomerExist(idCard: string): Observable<ApiResponse<boolean>> {
-    const params = new HttpParams().set('idCard', idCard);
-
-    return this.httpClient.get<ApiResponse<boolean>>(`${this.url}/${idCard}`);
+  public checkCustomerExist(idCard: string): Observable<ApiResponse<number>> {
+    return this.httpClient.get<ApiResponse<number>>(`${this.url}/${idCard}`);
   }
 }

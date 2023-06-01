@@ -8,4 +8,7 @@ export class AppComponent {
  
   constructor() {  }
    
+  logout() : void {
+    
+  }
 }

@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnDestroy {
 
   idCard: string
-  data$: Observable<ApiResponse<boolean>>;
+  data$: Observable<ApiResponse<number>>;
   subscription: Subscription;
 
   constructor(private loginService: LoginService, private router: Router) { }
@@ -20,9 +20,10 @@ export class LoginComponent implements OnDestroy {
   checkCustomerExist() {
     this.data$ = this.loginService.checkCustomerExist(this.idCard);
 
-    this.subscription = this.data$.subscribe((value: ApiResponse<boolean>) => {
-      if(value.data)
-        this.router.navigate(['customers']);
+    this.subscription = this.data$
+    .subscribe((customer: ApiResponse<number>) => {
+      if(customer.data)
+        this.router.navigate(['/customers', customer.data]);
     });
   }
     

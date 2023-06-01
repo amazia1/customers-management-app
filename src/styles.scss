@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+input.ng-invalid.ng-touched {
+  border: 1px solid #F87171 ;
+}
+
+ng-select.ng-invalid.ng-touched .ng-select-container {
+  border-color: #F87171 ;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #68646420;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #68646420;
+}
