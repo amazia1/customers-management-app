@@ -1,8 +1,8 @@
-<div *ngIf="packages && packages.length" class="w-full flex-col justify-center shadow-md rounded-lg p-4 mt-6 h-full bg-white">
+<div *ngIf="packages" class="w-full flex-col justify-center shadow-md rounded-lg p-4 mt-6 h-full bg-white">
   <div class="flex w-full mb-2 py-2 border-b">
-    <span class="text-medium font-bold">packages</span>
+    <span class="text-medium font-bold">Packages - {{ contract.contractName }}, {{ contract.contractNumber }}</span>
   </div>
-  <div class="hide-scroll flex-col w-full h-32 overflow-auto">
+  <div *ngIf="packages && packages.length" class="hide-scroll flex-col w-full h-32 overflow-auto">
     <ul *ngIf="packages.length" class="mt-2">
       <li *ngFor="let package of packages"
         class="hover:bg-gray-100 border-b sm:p-2">
@@ -22,8 +22,7 @@
       </li>
     </ul>
   </div>
-</div>
-
-<div *ngIf="packages && !packages.length" class="m-auto mt-10">
-  <span class="text-medium font-bold">No Packages Found!</span>
+  <div *ngIf="packages && !packages.length" class="m-auto mt-10">
+    <span class="text-medium font-bold">No Packages Found</span>
+  </div>
 </div>

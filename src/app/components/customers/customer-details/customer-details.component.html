@@ -1,22 +1,28 @@
 <div *ngIf="customer | async as customer" class="w-full flex-col justify-center shadow-md rounded-lg p-4 mt-4 h-full bg-white">
   <div class="flex justify-center pb-4 border-b">
     <div class="flex-col justify-center flex-shrink-0">
-      <img class="w-16 h-16 rounded-full" src="../../../assets/images/img.jpg" alt="user image">
-      <div class="flex-col"><span class="text-md font-semibold text-gray-900 truncate">{{ customer.data.firstName }} {{ customer.data.lastName }}</span></div>
-      <div class="flex-col"><span class="w-20 text-md text-gray-500">{{ customer.data.idCard }}</span></div>
+      <img class="w-16 h-16 mx-auto rounded-full" src="../../../assets/images/img.jpg" alt="user image">
+      <div class="flex-col text-center"><span class="text-md font-semibold text-gray-900 truncate">{{ customer.data.firstName }} {{ customer.data.lastName }}</span></div>
+      <div class="flex-col space-x-4 text-center">
+        <fa-icon class="text-gray-600 cursor-pointer" [icon]="['fas', 'id-card']"></fa-icon>
+        <span class="w-20 text-md text-gray-500">{{ customer.data.idCard }}</span>
+      </div>
     </div>
     <div class="flex-col justify-center flex-shrink-0"></div>
   </div>
 
-  <div class="flex justify-center">
+  <div class="flex justify-center mt-4">
     <div class="flex-col justify-center flex-shrink-0">
-      <div class="flex-col">
-        <span class="text-md font-semibold text-gray-900 truncate">
-          {{ customer.data.city }},
-          {{ customer.data.street }},
-          {{ customer.data.houseNumber }}
-          {{ customer.data.zipCode }}
-        </span>
+      <div class="flex">
+        <fa-icon class="text-gray-500 cursor-pointer mx-2" [icon]="['fas', 'location-dot']"></fa-icon>
+        <span class="text-md font-semibold text-gray-500 mx-0.5 truncate">{{ customer.data.city }},</span>
+        <span class="text-md font-semibold text-gray-500 mx-0.5 truncate">{{ customer.data.street }},</span>
+        <span class="text-md font-semibold text-gray-500 mx-0.5 truncate">{{ customer.data.houseNumber }}</span>
+      </div>
+      <div class="flex"><span class="text-md mx-auto text-center font-semibold text-gray-500 truncate">{{ customer.data.zipCode }}</span></div>
+      <div class="flex items-center justify-center mt-2 underline space-x-1 cursor-pointer">
+        <fa-icon class="text-gray-500 text-xs" [icon]="['fas', 'pen']"></fa-icon>
+        <span class="text-gray-500 text-sm">Edit Address</span>
       </div>
     </div>
   </div>

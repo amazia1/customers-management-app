@@ -1,3 +1,4 @@
+import { Contract } from './../../../models/contract';
 import { Package } from 'src/app/models/package';
 import { Customer } from './../../../models/customer';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
@@ -11,9 +12,11 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 export class CustomerContractsComponent {
   @Input() customer: Customer;
   packages: Array<Package>;
+  contract: Contract
 
-  showPackages(packages: Array<Package>) {
+  showPackages(contract: Contract, packages: Array<Package>) {
     this.packages = packages;
+    this.contract = contract;
   }
 
   

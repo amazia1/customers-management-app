@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Contract } from 'src/app/models/contract';
 import { Package } from 'src/app/models/package';
 
 @Component({
@@ -9,4 +10,5 @@ import { Package } from 'src/app/models/package';
 export class ContractPackagesComponent {
 
   @Input() packages: Array<Package>;
+  @Input() contract: Contract;
 }
