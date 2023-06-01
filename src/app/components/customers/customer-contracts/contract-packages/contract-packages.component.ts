@@ -11,4 +11,8 @@ export class ContractPackagesComponent {
 
   @Input() packages: Array<Package>;
   @Input() contract: Contract;
+
+  trackBy(index: number, item: Package) {
+    return item.id;
+  }
 }

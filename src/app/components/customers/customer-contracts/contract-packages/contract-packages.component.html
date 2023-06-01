@@ -4,7 +4,7 @@
   </div>
   <div *ngIf="packages && packages.length" class="hide-scroll flex-col w-full h-32 overflow-auto">
     <ul *ngIf="packages.length" class="mt-2">
-      <li *ngFor="let package of packages"
+      <li *ngFor="let package of packages; trackBy: trackBy"
         class="hover:bg-gray-100 border-b sm:p-2">
           <div class="flex items-center">
             <div class="flex justify-between w-full gap-10">

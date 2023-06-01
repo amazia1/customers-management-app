@@ -19,5 +19,8 @@ export class CustomerContractsComponent {
     this.contract = contract;
   }
 
+  trackBy(index: number, item: Contract) {
+    return item.id;
+  }
   
 }

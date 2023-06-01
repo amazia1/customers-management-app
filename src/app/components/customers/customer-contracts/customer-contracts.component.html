@@ -4,7 +4,7 @@
   </div>
   <div class="hide-scroll flex-col w-full h-64 overflow-auto">
     <ul>
-      <li *ngFor="let contract of customer.data.contracts"
+      <li *ngFor="let contract of customer.data.contracts; trackBy: trackBy"
         class="cursor-pointer hover:bg-gray-100 border-b sm:p-2"
         (click)="showPackages(contract, contract.packages)">
           <div class="flex items-center space-x-6">
