@@ -4,17 +4,23 @@
   </div>
 
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-    <form class="space-y-6">
+    <form (ngSubmit)="login()" [formGroup]="loginForm" class="space-y-6">
       <div>
         <label class="block text-sm font-medium leading-6 text-gray-800">ID Number</label>
         <div class="mt-2">
-          <input type="text" [(ngModel)]="idCard" name="id-card"
+          <input type="text" formControlName="idCard" name="id-card"
             class="block w-full rounded-md border-0 py-2 px-4 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-gray-800">
+        </div>
+        
+        <div class="text-xs text-red-400" *ngIf="loginForm.get('idCard').invalid && loginForm.get('idCard').touched">
+          <span *ngIf="loginForm.get('idCard').hasError('idValidator') && loginForm.get('idCard').touched">
+            Invalid Israeli Id number!
+          </span>
         </div>
       </div>
 
       <div>
-        <button type="submit" (click)="checkCustomerExist()" class="flex w-full justify-center rounded-md bg-sky-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
+        <button type="submit" [disabled]="loginForm.invalid" class="flex w-full justify-center rounded-md bg-sky-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm disabled:bg-sky-900/50 hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
       </div>
     </form>
   </div>

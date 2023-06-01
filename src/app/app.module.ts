@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { CustomersComponent } from './components/customers/customers.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomerDetailsComponent } from './components/customers/customer-details/customer-details.component';
 import { CustomerContractsComponent } from './components/customers/customer-contracts/customer-contracts.component';
 import { ContractPackagesComponent } from './components/customers/customer-contracts/contract-packages/contract-packages.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
@@ -38,7 +40,15 @@ import { faFileContract as fasFileContract } from '@fortawesome/free-solid-svg-i
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     FontAwesomeModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
