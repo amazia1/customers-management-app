@@ -1,0 +1,40 @@
+<div class="w-full max-w-md mx-auto p-6">
+  <div class="p-4 sm:p-7">
+    <div class="flex text-center items-center border-b space-x-4 pb-4">
+      <fa-icon class="text-sky-900 text-xl cursor-pointer mx-2" [icon]="['fas', 'location-dot']"></fa-icon>
+      <h1 class="block text-2xl font-bold text-gray-800">Edit address</h1>
+    </div>
+
+    <div class="mt-5">
+      <form (ngSubmit)="updateDetails()" [formGroup]="customerForm">
+        <div class="grid gap-y-4">
+          <div>
+            <label for="city" class="block text-sm font-bold ml-1 mb-2 dark:text-white">City</label>
+            <div>
+              <input type="text" formControlName="city" name="city" class="py-2 px-4 block w-full border-2 border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 shadow-sm">
+            </div>
+          </div>
+          <div>
+            <label for="street" class="block text-sm font-bold ml-1 mb-2 dark:text-white">Street</label>
+            <div>
+              <input type="text" formControlName="street" name="street" class="py-2 px-4 block w-full border-2 border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 shadow-sm">
+            </div>
+          </div>
+          <div>
+            <label for="house-number" class="block text-sm font-bold ml-1 mb-2 dark:text-white">House Number</label>
+            <div>
+              <input type="text" formControlName="houseNumber" name="house-number" class="py-2 px-4 block w-full border-2 border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 shadow-sm">
+            </div>
+          </div>
+          <div class="border-b pb-6">
+            <label for="zip-code" class="block text-sm font-bold ml-1 mb-2 dark:text-white">Zip Code</label>
+            <div >
+              <input type="text" formControlName="zipCode" name="zip-code" class="py-2 px-4 block w-full border-2 border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 shadow-sm">
+            </div>
+          </div>
+          <button type="submit" [disabled]="customerForm.invalid" class="flex w-full justify-center rounded-md bg-sky-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm disabled:bg-sky-900/50 hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

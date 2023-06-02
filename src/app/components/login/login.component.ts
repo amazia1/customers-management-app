@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       }
 
       if (response.message && !response.success) {
-        this.toastService.error(response.message, 'Not Found');
+        this.toastService.error(response.message);
       }
     });
   }
@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
     
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription)
+      this.subscription.unsubscribe();
   }
 }

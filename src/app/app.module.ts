@@ -11,7 +11,10 @@ import { CustomerDetailsComponent } from './components/customers/customer-detail
 import { CustomerContractsComponent } from './components/customers/customer-contracts/customer-contracts.component';
 import { ContractPackagesComponent } from './components/customers/customer-contracts/contract-packages/contract-packages.component';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthInterceptor } from './auth.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
@@ -25,6 +28,8 @@ import { faArrowLeft as faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faIdCard as fasIdCard } from '@fortawesome/free-solid-svg-icons';
 import { faUser as fasUser } from '@fortawesome/free-solid-svg-icons';
 import { faFileContract as fasFileContract } from '@fortawesome/free-solid-svg-icons';
+import { CustomerModalComponent } from './components/customers/customer-details/customer-modal/customer-modal.component';
+import { AddressPipe } from './components/customers/customer-details/address.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,9 @@ import { faFileContract as fasFileContract } from '@fortawesome/free-solid-svg-i
     CustomersComponent,
     CustomerDetailsComponent,
     CustomerContractsComponent,
-    ContractPackagesComponent
+    ContractPackagesComponent,
+    CustomerModalComponent,
+    AddressPipe
   ],
   imports: [
     BrowserModule,
@@ -43,6 +50,7 @@ import { faFileContract as fasFileContract } from '@fortawesome/free-solid-svg-i
     ReactiveFormsModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
+    NgxSmartModalModule.forRoot(),
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-bottom-right',
@@ -50,7 +58,13 @@ import { faFileContract as fasFileContract } from '@fortawesome/free-solid-svg-i
     }),
     
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
