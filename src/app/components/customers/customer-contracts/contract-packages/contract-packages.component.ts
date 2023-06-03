@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Contract } from 'src/app/models/contract';
 import { Package } from 'src/app/models/package';
 
 @Component({
   selector: 'app-contract-packages',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './contract-packages.component.html',
   styleUrls: ['./contract-packages.component.scss']
 })

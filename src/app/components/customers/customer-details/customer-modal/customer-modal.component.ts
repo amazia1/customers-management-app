@@ -60,7 +60,7 @@ export class CustomerModalComponent implements OnInit, OnDestroy {
         this.customerService.updateData(response.data);
         this.closeModal();
         this.toastService.success('Customer updated successfully');
-      })
+      });
   }
 
   closeModal() {

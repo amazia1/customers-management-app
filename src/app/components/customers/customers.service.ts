@@ -18,7 +18,7 @@ export class CustomersService {
   constructor(private httpClient: HttpClient) { }
 
   GetCustomerById(id: string) : Observable<ApiResponse<Customer>> {
-    return this.httpClient.get<ApiResponse<Customer>>(`${this.url}/${id}`)
+    return this.httpClient.get<ApiResponse<Customer>>(`${this.url}/GetByIdCard/${id}`)
     .pipe(catchError((error): Observable<any> => {
       return throwError(() => new Error('An Error occured while fetching customer'));
     }));

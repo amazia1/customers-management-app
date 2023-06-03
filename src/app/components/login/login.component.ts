@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   loginForm: FormGroup;
   idCard: string
-  data$: Observable<ApiResponse<number>>;
+  data$: Observable<ApiResponse<string>>;
   subscription: Subscription;
 
   constructor(
@@ -35,9 +35,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.data$ = this.loginService.checkCustomerExist(id);
 
     this.subscription = this.data$
-    .subscribe((response: ApiResponse<number>) => {
+    .subscribe((response: ApiResponse<string>) => {
       if(response.data && response.success) {
-        this.router.navigate(['/customers', response.data]);
+        localStorage.setItem('token', response.data);
+        this.router.navigate(['/customers', id]);
         return;
       }
 

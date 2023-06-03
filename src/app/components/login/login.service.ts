@@ -12,10 +12,14 @@ export class LoginService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public checkCustomerExist(idCard: string): Observable<ApiResponse<number>> {
-    return this.httpClient.get<ApiResponse<number>>(`${this.url}/${idCard}`)
+  public checkCustomerExist(idCard: string): Observable<ApiResponse<string>> {
+    return this.httpClient.get<ApiResponse<string>>(`${this.url}/${idCard}`)
     .pipe(catchError((error): Observable<any> => {
       return throwError(() => new Error('An Error occured while logging in'));
-    }));;
+    }));
+  }
+
+  logout() {
+    localStorage.removeItem('token')
   }
 }

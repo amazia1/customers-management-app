@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginService } from './components/login/login.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
  
-  constructor() {  }
+  constructor(private authService: LoginService) {  }
+
+  logout() {
+    this.authService.logout();
+  }
 }
