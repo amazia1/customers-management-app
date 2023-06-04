@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Customer } from 'src/app/models/customer';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { CustomerModalComponent } from './customer-modal/customer-modal.component';
@@ -18,7 +18,8 @@ export class CustomerDetailsComponent implements OnInit, OnDestroy {
 
   constructor (
     private customerService: CustomersService,
-    private modalService: NgxSmartModalService
+    private modalService: NgxSmartModalService,
+    private changes: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +31,7 @@ export class CustomerDetailsComponent implements OnInit, OnDestroy {
         this.customer.street = street;
         this.customer.houseNumber = houseNumber;
         this.customer.zipCode = zipCode;
+        this.changes.markForCheck();
       });
 
     this.modalService.create('customerModal', CustomerModalComponent, { dismissable: false });
